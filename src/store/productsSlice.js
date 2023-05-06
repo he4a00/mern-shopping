@@ -30,7 +30,7 @@ export const fetchProductsByCategory = createAsyncThunk(
   "products/fetchProductsByCategory",
   async (categoryId) => {
     const response = await axios.get(
-      `http://mern-shopping-api.onrender.com/api/products?category=${categoryId}`
+      `https://mern-shopping-api.onrender.com/api/products?category=${categoryId}`
     );
     return response.data;
   }
