@@ -17,7 +17,7 @@ export const fetchFeaturedProducts = createAsyncThunk(
   "products/fetchFeaturedProducts",
   async () => {
     const response = await axios.get(
-      "https://example-api.onrender.com/api/products?new=true"
+      "https://mern-shopping-api.onrender.com/api/products?new=true"
     );
     return response.data;
   }
