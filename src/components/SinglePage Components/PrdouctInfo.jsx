@@ -26,7 +26,9 @@ const PrdouctInfo = () => {
 
   useEffect(() => {
     const getProduct = async () => {
-      const res = await axios.get(`http://localhost:3000/api/products/${id}`);
+      const res = await axios.get(
+        `https://mern-shopping-api.onrender.com/api/products/${id}`
+      );
       setProduct(res.data);
     };
     getProduct();
