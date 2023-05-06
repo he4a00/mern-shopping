@@ -6,7 +6,7 @@ export const registerUser = createAsyncThunk(
   async (userData) => {
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/users/register",
+        "https://mern-shopping-api.onrender.com/api/users/register",
         userData
       );
       return res.data;
@@ -21,7 +21,7 @@ export const LoginUser = createAsyncThunk(
   async (userData) => {
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/users/login",
+        "https://mern-shopping-api.onrender.com/api/users/login",
         userData
       );
       return res.data;

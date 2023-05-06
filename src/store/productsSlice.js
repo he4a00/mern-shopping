@@ -6,7 +6,9 @@ import axios from "axios";
 export const fetchAllProducts = createAsyncThunk(
   "products/fetchAllProducts",
   async () => {
-    const response = await axios.get("http://localhost:3000/api/products");
+    const response = await axios.get(
+      "https://mern-shopping-api.onrender.com/api/products"
+    );
     return response.data;
   }
 );
@@ -28,7 +30,7 @@ export const fetchProductsByCategory = createAsyncThunk(
   "products/fetchProductsByCategory",
   async (categoryId) => {
     const response = await axios.get(
-      `http://localhost:3000/api/products?category=${categoryId}`
+      `http://lohttps://mern-shopping-api.onrender.com/api/products?category=${categoryId}`
     );
     return response.data;
   }
@@ -40,7 +42,7 @@ export const fetchProductsById = createAsyncThunk(
   "products/fetchProductsById",
   async (id) => {
     const response = await axios.get(
-      `http://localhost:3000/api/products/${id}`
+      `https://mern-shopping-api.onrender.com/api/products/${id}`
     );
     return response.data;
   }
