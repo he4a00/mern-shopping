@@ -1,0 +1,12 @@
+@media (max-width: 676px) {
+    .landing-img {
+
+       display: none;
+    }
+}
+@media (max-width: 1024px) {
+    .landing-img {
+
+        display : none
+    }
+}
