@@ -13,6 +13,11 @@ const Navbar = () => {
   const cart = useSelector((state) => state.cart.cart);
   const user = useSelector((state) => state.auth.user);
 
+  const admin = JSON.parse(
+    JSON.parse(localStorage.getItem("persist:root")).user
+  )?.isAdmin;
+  console.log(admin);
+
   const StyledBadge = styled(Badge)(({ theme }) => ({
     "& .MuiBadge-badge": {
       right: -3,
@@ -75,6 +80,24 @@ const Navbar = () => {
               Shop
             </Link>
           </Typography>
+
+          {admin && (
+            <Typography
+              sx={{
+                margin: "30px",
+                fontFamily: "Rubik",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+            >
+              <Link
+                to="/admin"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                Admin
+              </Link>
+            </Typography>
+          )}
         </Stack>
         <Stack
           direction="row"

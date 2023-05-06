@@ -10,10 +10,16 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import Admin from "./pages/Admin";
 
 function App() {
   const user = useSelector((state) => state.auth.user);
   const navigate = useNavigate();
+
+  const admin = JSON.parse(
+    JSON.parse(localStorage.getItem("persist:root")).user
+  )?.isAdmin;
+  console.log(admin);
 
   // if (user) {
   //   navigate("/");
@@ -33,6 +39,10 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/:id" element={<SingleProduct />} />
         <Route path="/category/:category" element={<CategoryProducts />} />
+        <Route
+          path="/admin"
+          element={admin ? <Admin /> : <Navigate to="/" replace />}
+        />
       </Routes>
     </Box>
   );
