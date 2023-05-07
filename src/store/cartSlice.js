@@ -63,7 +63,7 @@ export const clearCartProducts = createAsyncThunk(
     try {
       // Send a DELETE request to the backend to delete the product from the user's cart
       const res = await axios.put(
-        `https://mern-shopping-api.onrender.com/api/cart/${userId}`
+        `https://mern-shopping-api.onrender.com/api/cart/products/clear/${userId}`
       );
 
       // Return the updated cart
