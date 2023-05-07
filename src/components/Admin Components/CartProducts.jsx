@@ -18,8 +18,9 @@ import { getUserCart } from "../../store/adminCartSlice";
 const CartProducts = () => {
   const dispatch = useDispatch();
   const cartProducts = useSelector((state) => state.adminCarts.cart?.products);
+  console.log(cartProducts);
   const location = useLocation();
-  const userId = location.pathname.split("/")[3];
+  const userId = location.pathname.split("/")[4];
   useEffect(() => {
     dispatch(getUserCart(userId));
   }, [dispatch]);
