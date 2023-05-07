@@ -57,7 +57,7 @@ const PrdouctInfo = () => {
         if (result.payload) {
           Swal.fire({
             icon: "success",
-            title: `Removed Successfully`,
+            title: `Added Successfully`,
             showConfirmButton: false,
             timer: 3500,
           });
