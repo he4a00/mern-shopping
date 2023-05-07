@@ -17,6 +17,7 @@ import EditProduct from "./components/Admin Components/EditProduct";
 import AdminUsers from "./components/Admin Components/AdminUsers";
 import EditUser from "./components/Admin Components/EditUser";
 import AdminCarts from "./components/Admin Components/AdminCarts";
+import CartProducts from "./components/Admin Components/CartProducts";
 
 function App() {
   const user = useSelector((state) => state.auth.user);
@@ -58,6 +59,7 @@ function App() {
             <Route path="/admin/users/" element={<AdminUsers />} />
             <Route path="/admin/users/:id" element={<EditUser />} />
             <Route path="/admin/carts" element={<AdminCarts />} />
+            <Route path="/admin/cart/products/:id" element={<CartProducts />} />
           </>
         )}
       </Routes>
