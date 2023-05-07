@@ -1,26 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import {
-  Avatar,
-  Badge,
-  Box,
-  Button,
-  IconButton,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Menu,
-  MenuItem,
-  Typography,
-} from "@mui/material";
+import { Badge, Box, Button, IconButton, Typography } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import Person2SharpIcon from "@mui/icons-material/Person2Sharp";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -60,13 +46,10 @@ const Announcement = () => {
   const toggleNav = () => {
     setIsOpen(!isOpen);
   };
-  const menuItems = [
-    { label: "Home" },
-    { label: "Shop" },
-    { label: "Pages" },
-    { label: "Blog" },
-    { label: "Contact" },
-  ];
+
+  const admin = JSON.parse(
+    JSON.parse(localStorage.getItem("persist:root")).user
+  )?.isAdmin;
 
   return (
     <>
@@ -359,18 +342,51 @@ const Announcement = () => {
           </Box>
         )}
 
-        <List sx={{ padding: "0 10px", top: "10px" }}>
-          {menuItems.map((item, index) => (
-            <ListItem
-              button
-              key={index}
-              sx={{ padding: "10px 0", borderBottom: "1px solid #d5d5d5" }}
+        <Box sx={{ padding: "0 10px", top: "10px" }}>
+          <Typography
+            sx={{
+              margin: "30px",
+              fontFamily: "Rubik",
+              fontWeight: "bold",
+              cursor: "pointer",
+            }}
+          >
+            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+              Home
+            </Link>
+          </Typography>
+
+          <Typography
+            sx={{
+              margin: "30px",
+              fontFamily: "Rubik",
+              fontWeight: "bold",
+              cursor: "pointer",
+            }}
+          >
+            <Link to="/shop" style={{ textDecoration: "none", color: "black" }}>
+              Shop
+            </Link>
+          </Typography>
+
+          {admin && (
+            <Typography
+              sx={{
+                margin: "30px",
+                fontFamily: "Rubik",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
             >
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.label} />
-            </ListItem>
-          ))}
-        </List>
+              <Link
+                to="/admin"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                Admin
+              </Link>
+            </Typography>
+          )}
+        </Box>
 
         {/* Social Icons */}
 
