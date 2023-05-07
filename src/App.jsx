@@ -1,5 +1,5 @@
 import "./App.css";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
@@ -10,7 +10,13 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import Admin from "./pages/Admin";
+import AdminHome from "./components/Admin Components/AdminHome";
+import AdminProducts from "./components/Admin Components/AdminProducts";
+import AddNewProduct from "./components/Admin Components/AddNewProduct";
+import EditProduct from "./components/Admin Components/EditProduct";
+import AdminUsers from "./components/Admin Components/AdminUsers";
+import EditUser from "./components/Admin Components/EditUser";
+import AdminCarts from "./components/Admin Components/AdminCarts";
 
 function App() {
   const user = useSelector((state) => state.auth.user);
@@ -19,7 +25,7 @@ function App() {
   const admin = JSON.parse(
     JSON.parse(localStorage.getItem("persist:root")).user
   )?.isAdmin;
-  console.log(admin);
+  // console.log(admin);
 
   // if (user) {
   //   navigate("/");
@@ -39,10 +45,21 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/:id" element={<SingleProduct />} />
         <Route path="/category/:category" element={<CategoryProducts />} />
-        <Route
-          path="/admin"
-          element={admin ? <Admin /> : <Navigate to="/" replace />}
-        />
+        {/* Admin Components */}
+        {admin && (
+          <>
+            <Route
+              path="/admin"
+              element={admin ? <AdminHome /> : <Navigate to="/" replace />}
+            />
+            <Route path="/admin/products" element={<AdminProducts />} />
+            <Route path="/products/add" element={<AddNewProduct />} />
+            <Route path="/admin/products/:id" element={<EditProduct />} />
+            <Route path="/admin/users/" element={<AdminUsers />} />
+            <Route path="/admin/users/:id" element={<EditUser />} />
+            <Route path="/admin/carts" element={<AdminCarts />} />
+          </>
+        )}
       </Routes>
     </Box>
   );

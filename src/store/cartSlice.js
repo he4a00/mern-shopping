@@ -5,7 +5,7 @@ export const getUserCart = createAsyncThunk(
   "cart/getUserCart",
   async (cartId) => {
     const res = await axios.get(
-      `https://mern-shopping-api.onrender.com/api/cart/${cartId}`
+      `http://mern-shopping-api.onrender.com/api/cart/${cartId}`
     );
     return res.data;
   }
@@ -16,7 +16,7 @@ export const updateCartProducts = createAsyncThunk(
   async ({ cartId, products }) => {
     try {
       const res = await axios.put(
-        `https://mern-shopping-api.onrender.com/api/cart/${cartId}`,
+        `http://mern-shopping-api.onrender.com/api/cart/${cartId}`,
         products
       );
       return res.data;
@@ -31,7 +31,7 @@ export const createCart = createAsyncThunk(
   async (cartData) => {
     try {
       const res = await axios.post(
-        "https://mern-shopping-api.onrender.com/api/cart/",
+        "http://mern-shopping-api.onrender.com/api/cart/",
         cartData
       );
       return res.data;
@@ -46,7 +46,7 @@ export const deleteCartProduct = createAsyncThunk(
     try {
       // Send a DELETE request to the backend to delete the product from the user's cart
       const res = await axios.delete(
-        `https://mern-shopping-api.onrender.com/api/cart/${userId}/${productId}`
+        `http://mern-shopping-api.onrender.com/api/cart/${userId}/${productId}`
       );
 
       // Return the updated cart
@@ -63,7 +63,7 @@ export const clearCartProducts = createAsyncThunk(
     try {
       // Send a DELETE request to the backend to delete the product from the user's cart
       const res = await axios.delete(
-        `https://mern-shopping-api.onrender.com/api/products/clear/${userId}`
+        `http://mern-shopping-api.onrender.com/api/cart/${userId}`
       );
 
       // Return the updated cart
