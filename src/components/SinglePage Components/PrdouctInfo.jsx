@@ -54,7 +54,7 @@ const PrdouctInfo = () => {
         products: updatedCart,
         quantity: quantity,
       }).then((result) => {
-        if ((result, payload)) {
+        if (result.payload) {
           Swal.fire({
             icon: "success",
             title: `Removed Successfully`,
