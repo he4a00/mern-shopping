@@ -7,7 +7,7 @@ export const getCarts = createAsyncThunk("adminCarts/getCarts", async () => {
   ).accessToken;
   try {
     const res = await axios.get(
-      "http://mern-shopping-api.onrender.com/api/cart/",
+      "https://mern-shopping-api.onrender.com/api/cart/",
       {
         headers: { token: `Bearer ${token}` },
       }
@@ -23,7 +23,7 @@ export const getUserCart = createAsyncThunk(
   async (userId) => {
     try {
       const res = await axios.get(
-        "http://mern-shopping-api.onrender.com/api/cart/" + userId
+        "https://mern-shopping-api.onrender.com/api/cart/" + userId
       );
       return res.data;
     } catch (error) {

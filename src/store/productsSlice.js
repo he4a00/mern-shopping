@@ -7,7 +7,7 @@ export const fetchAllProducts = createAsyncThunk(
   "products/fetchAllProducts",
   async () => {
     const response = await axios.get(
-      "http://mern-shopping-api.onrender.com/api/products"
+      "https://mern-shopping-api.onrender.com/api/products"
     );
     return response.data;
   }
@@ -19,7 +19,7 @@ export const fetchFeaturedProducts = createAsyncThunk(
   "products/fetchFeaturedProducts",
   async () => {
     const response = await axios.get(
-      "http://mern-shopping-api.onrender.com/api/products"
+      "https://mern-shopping-api.onrender.com/api/products"
     );
     return response.data;
   }
@@ -30,7 +30,7 @@ export const fetchProductsByCategory = createAsyncThunk(
   "products/fetchProductsByCategory",
   async (categoryId) => {
     const response = await axios.get(
-      `http://mern-shopping-api.onrender.com/api/products?category=${categoryId}`
+      `https://mern-shopping-api.onrender.com/api/products?category=${categoryId}`
     );
     return response.data;
   }
@@ -42,7 +42,7 @@ export const fetchProductsById = createAsyncThunk(
   "products/fetchProductsById",
   async (id) => {
     const response = await axios.get(
-      `http://mern-shopping-api.onrender.com/api/products/${id}`
+      `https://mern-shopping-api.onrender.com/api/products/${id}`
     );
     return response.data;
   }
@@ -57,7 +57,7 @@ export const deleteProduct = createAsyncThunk(
     ).accessToken;
     try {
       const response = await axios.delete(
-        `http://mern-shopping-api.onrender.com/api/products/${productId}`,
+        `https://mern-shopping-api.onrender.com/api/products/${productId}`,
         {
           headers: { token: `Bearer ${token}` },
         }
@@ -78,7 +78,7 @@ export const updateProduct = createAsyncThunk(
     ).accessToken;
     try {
       const res = await axios.put(
-        "http://mern-shopping-api.onrender.com/api/products/" + productId,
+        "https://mern-shopping-api.onrender.com/api/products/" + productId,
         newProductData,
         {
           headers: { token: `Bearer ${token}` },
@@ -99,7 +99,7 @@ export const addProduct = createAsyncThunk(
     ).accessToken;
     try {
       const response = await axios.post(
-        "http://mern-shopping-api.onrender.com/api/products/",
+        "https://mern-shopping-api.onrender.com/api/products/",
         productData,
         {
           headers: { token: `Bearer ${token}` },

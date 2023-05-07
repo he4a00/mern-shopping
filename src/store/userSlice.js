@@ -7,7 +7,7 @@ export const getAllUsers = createAsyncThunk("users/getAllUsers", async () => {
   ).accessToken;
   try {
     const res = await axios.get(
-      "http://mern-shopping-api.onrender.com/api/users",
+      "https://mern-shopping-api.onrender.com/api/users",
       {
         headers: { token: `Bearer ${token}` },
       }
@@ -26,7 +26,7 @@ export const deleteUser = createAsyncThunk(
     ).accessToken;
     try {
       const res = await axios.delete(
-        `http://mern-shopping-api.onrender.com/api/users/${userId}`,
+        `https://mern-shopping-api.onrender.com/api/users/${userId}`,
         { headers: { token: `Bearer ${token}` } }
       );
       return res.data;
@@ -42,7 +42,7 @@ export const addUser = createAsyncThunk("users/addUser", async (userData) => {
   ).accessToken;
   try {
     const res = await axios.post(
-      "http://mern-shopping-api.onrender.com/api/users/add",
+      "https://mern-shopping-api.onrender.com/api/users/add",
       userData,
       { headers: { token: `Bearer ${token}` } }
     );
@@ -60,7 +60,7 @@ export const updateUser = createAsyncThunk(
     ).accessToken;
     try {
       const res = await axios.put(
-        "http://mern-shopping-api.onrender.com/api/users/" + userId,
+        "https://mern-shopping-api.onrender.com/api/users/" + userId,
         newUserData,
         {
           headers: { token: `Bearer ${token}` },

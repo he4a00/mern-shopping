@@ -180,7 +180,7 @@ const Sidebar = () => {
                 width: "100%",
                 "&:hover": { bgcolor: "#e0e0e0" },
               }}
-              to="/carts"
+              to="/admin/carts"
             >
               <ListItemButton>
                 <ListItemIcon>
