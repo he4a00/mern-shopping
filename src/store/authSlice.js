@@ -21,7 +21,7 @@ export const LoginUser = createAsyncThunk(
   async (userData) => {
     try {
       const res = await axios.post(
-        "https://mern-shopping-api.onrender.com/api/users/login",
+        "http://localhost:30https://mern-shopping-api.onrender.com/api/users/login",
         userData
       );
       return res.data;

@@ -74,6 +74,23 @@ export const clearCartProducts = createAsyncThunk(
   }
 );
 
+// update quantity
+
+export const updateQuantity = createAsyncThunk(
+  "cart/updateQuantity",
+  async ({ userId, productId, quantity }) => {
+    try {
+      const res = await axios.put(
+        `https://mern-shopping-api.onrender.com/api/cart/quantity/${userId}/${productId}`,
+        { quantity }
+      );
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -156,8 +173,25 @@ export const cartSlice = createSlice({
     builder.addCase(clearCartProducts.rejected, (state, action) => {
       state.error = true;
     });
+
+    // update quantity
+
+    builder.addCase(updateQuantity.pending, (state) => {
+      state.loading = "pending";
+      state.error = false;
+    });
+
+    builder.addCase(updateQuantity.fulfilled, (state, action) => {
+      state.error = false;
+      console.log("updated");
+      console.log(action.payload);
+      state.cart = action.payload;
+    });
+
+    builder.addCase(updateQuantity.rejected, (state, action) => {
+      state.error = true;
+    });
   },
 });
 
-export const { addProduct } = cartSlice.actions;
 export default cartSlice.reducer;

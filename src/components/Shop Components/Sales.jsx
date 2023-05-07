@@ -132,7 +132,14 @@ const Sales = () => {
                   }}
                 />
 
-                <Box sx={{ dispaly: "flex", position: "absolute" }}>
+                <Box
+                  sx={{
+                    dispaly: "flex",
+                    position: "absolute",
+                    left: { xs: "17px" },
+                    top: { xs: "60%" },
+                  }}
+                >
                   <ShoppingCartIcon
                     variant="subtitle2"
                     sx={{

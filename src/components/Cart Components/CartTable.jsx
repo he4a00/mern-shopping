@@ -3,6 +3,7 @@ import {
   AlertTitle,
   Box,
   Button,
+  Input,
   Snackbar,
   Stack,
   Typography,
@@ -21,6 +22,7 @@ import {
   getUserCart,
   deleteCartProduct,
   clearCartProducts,
+  updateQuantity,
 } from "../../store/cartSlice.js";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -31,6 +33,8 @@ const CartTable = () => {
   const user = useSelector((state) => state.auth.user);
   const cartProducts = useSelector((state) => state.cart.cart?.products);
   const error = useSelector((state) => state.cart.error);
+
+  const [counter, setCounter] = useState(0);
 
   const userId = user._id;
 
@@ -76,6 +80,10 @@ const CartTable = () => {
         });
       }
     });
+  };
+
+  const handleQuantity = (userId, productId, counter) => {
+    dispatch(updateQuantity({ userId, productId, quantity: counter }));
   };
 
   let price = cart?.products?.reduce((totalPrice, cartProduct) => {
@@ -132,6 +140,7 @@ const CartTable = () => {
                 <StyledTableCell align="right">Quantity</StyledTableCell>
                 <StyledTableCell align="right">Total</StyledTableCell>
                 <StyledTableCell align="right">Actions</StyledTableCell>
+                <StyledTableCell align="right">Edit Quantity</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -214,6 +223,69 @@ const CartTable = () => {
                       >
                         Delete
                       </Button>
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      <Box
+                        sx={{
+                          backgroundColor: "#f5f5f5",
+                          alignItems: "center",
+                          display: "flex",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <Typography
+                          sx={{
+                            fontSize: "20px",
+                            fontFamily: "Rubik",
+
+                            cursor: "pointer",
+                          }}
+                        >
+                          -
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontSize: "20px",
+                            fontFamily: "Rubik",
+                            margin: "20px",
+                          }}
+                        >
+                          {counter}
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontSize: "20px",
+                            fontFamily: "Rubik",
+
+                            cursor: "pointer",
+                          }}
+                          onClick={() => setCounter(counter + 1)}
+                        >
+                          +
+                        </Typography>
+                        <Button
+                          onClick={() =>
+                            handleQuantity(userId, cartProduct._id, counter)
+                          }
+                          sx={{
+                            padding: "10px",
+                            borderRadius: "0",
+                            color: "#fff",
+                            width: "100px",
+                            height: "50px",
+                            marginLeft: "20px",
+                            borderRadius: "6px",
+                            backgroundColor: "#7fad39",
+                            fontFamily: "Rubik",
+                            fontWeight: "bold",
+                            "&:hover": {
+                              backgroundColor: "#7fad39",
+                            },
+                          }}
+                        >
+                          Edit
+                        </Button>
+                      </Box>
                     </StyledTableCell>
                   </StyledTableRow>
                 ))

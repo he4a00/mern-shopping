@@ -116,7 +116,7 @@ const RelatedProducts = () => {
                   sx={{
                     dispaly: "flex",
                     position: "absolute",
-                    left: "20px",
+                    left: { xs: "70px", md: "20px" },
                   }}
                 >
                   <ShoppingCartIcon

@@ -117,7 +117,12 @@ const Announcement = () => {
           </Box>
           <Box>
             {user && (
-              <Typography sx={{ fontFamily: "Rubik" }}>
+              <Typography
+                sx={{
+                  fontFamily: "Rubik",
+                  display: { xs: "none", md: "flex" },
+                }}
+              >
                 Hello, {user.username}
               </Typography>
             )}
@@ -303,6 +308,9 @@ const Announcement = () => {
             >
               Log Out
             </Button>
+            <Typography sx={{ margin: "30px", fontFamily: "Rubik" }}>
+              Hello , {user.username}
+            </Typography>
           </Box>
         ) : (
           <Box
