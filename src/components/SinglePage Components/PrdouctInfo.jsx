@@ -53,17 +53,17 @@ const PrdouctInfo = () => {
         cartId,
         products: updatedCart,
         quantity: quantity,
-      }).then((result) => {
-        if (result.payload) {
-          Swal.fire({
-            icon: "success",
-            title: `Added Successfully`,
-            showConfirmButton: false,
-            timer: 3500,
-          });
-        }
       })
-    );
+    ).then((result) => {
+      if (result.payload) {
+        Swal.fire({
+          icon: "success",
+          title: `Added To Cart Successfully`,
+          showConfirmButton: false,
+          timer: 3500,
+        });
+      }
+    });
   };
 
   return (
