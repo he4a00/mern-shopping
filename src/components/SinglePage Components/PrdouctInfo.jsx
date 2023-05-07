@@ -12,6 +12,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCartProducts } from "../../store/cartSlice";
+import Swal from "sweetalert2";
 
 const PrdouctInfo = () => {
   const quantity = useSelector((state) => state.cart.quantity);
@@ -48,7 +49,20 @@ const PrdouctInfo = () => {
       total: cart.total + product.price * counter,
     };
     dispatch(
-      updateCartProducts({ cartId, products: updatedCart, quantity: quantity })
+      updateCartProducts({
+        cartId,
+        products: updatedCart,
+        quantity: quantity,
+      }).then((result) => {
+        if ((result, payload)) {
+          Swal.fire({
+            icon: "success",
+            title: `Removed Successfully`,
+            showConfirmButton: false,
+            timer: 3500,
+          });
+        }
+      })
     );
   };
 
