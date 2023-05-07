@@ -1,18 +1,24 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
-import { Carousel } from "@trendyol-js/react-carousel";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper";
 
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-cards";
+import "./Slider.css";
+import { Link } from "react-router-dom";
 const ProductsSlider = () => {
   const images = [
     {
-      name: "DRIED FRUIT",
+      name: "All",
       images:
         "https://media.discordapp.net/attachments/1098895428772184144/1098895496552128533/cat-1.jpg",
     },
     {
-      name: "DRINK FRUIT",
+      name: "Fastfood",
       images:
-        "https://media.discordapp.net/attachments/1098895428772184144/1098895496824770560/cat-2.jpg",
+        "https://media.discordapp.net/attachments/1098895428772184144/1099232551689789450/product-5.jpg",
     },
     {
       name: "VEGETABLES",
@@ -20,20 +26,17 @@ const ProductsSlider = () => {
         "https://media.discordapp.net/attachments/1098895428772184144/1098895497084805201/cat-3.jpg",
     },
     {
-      name: "DRIED FRUIT",
+      name: "Fruits",
       images:
-        "https://media.discordapp.net/attachments/1098895428772184144/1098895497332260864/cat-4.jpg",
+        "https://media.discordapp.net/attachments/1098895428772184144/1099232509440577536/product-12.jpg",
     },
     {
-      name: "DRIED FRUIT",
+      name: "Meat",
       images:
         "https://media.discordapp.net/attachments/1098895428772184144/1098895497609105448/cat-5.jpg",
     },
   ];
 
-  const alertName = (name) => {
-    alert(name);
-  };
   return (
     <Box
       sx={{ paddingTop: "250px", marginTop: { sm: "350px", md: "0", xs: "0" } }}
@@ -42,45 +45,73 @@ const ProductsSlider = () => {
         sx={{
           maxWidth: "1128px",
           margin: "auto",
-          widht: "100%",
+          width: "100%",
           display: "flex",
         }}
       >
-        <Carousel
-          show={3.5}
-          responsive={false}
-          transition={0.5}
-          swiping={true}
-          infinite={true}
+        <Swiper
+          slidesPerView={9}
+          spaceBetween={10}
+          pagination={{
+            clickable: true,
+          }}
+          breakpoints={{
+            "@0.00": {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            "@0.75": {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            "@1.00": {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            },
+            "@1.50": {
+              slidesPerView: 4,
+              spaceBetween: 50,
+            },
+          }}
+          modules={[Pagination]}
+          className="mySwiper"
         >
           {images.map((image, index) => (
-            <Box sx={{}}>
-              <img src={image.images} alt="" />
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  backgroundColor: "#7fad39",
-                  height: "40px",
-                  margin: "10px",
-                }}
-              >
-                <Typography
-                  onClick={() => alertName(image.name)}
+            <Box sx={{ display: "block" }}>
+              <SwiperSlide key={index}>
+                <img src={image.images} alt="" />
+                <Box
                   sx={{
-                    fontWeight: "bold",
-                    color: "white",
-                    fontFamily: "Rubik",
-                    cursor: "pointer",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: "#7fad39",
+                    height: "40px",
+                    width: "140px",
+                    borderRadius: "8px",
+                    margin: "10px",
                   }}
                 >
-                  {image.name}
-                </Typography>
-              </Box>
+                  <Link
+                    style={{ textDecoration: "none" }}
+                    to={`/category/${image.name}`}
+                  >
+                    <Typography
+                      sx={{
+                        fontWeight: "bold",
+                        color: "white",
+                        fontFamily: "Rubik",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {image.name}
+                    </Typography>
+                  </Link>
+                </Box>
+              </SwiperSlide>
             </Box>
           ))}
-        </Carousel>
+        </Swiper>
       </Box>
     </Box>
   );
