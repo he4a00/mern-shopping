@@ -15,6 +15,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { Link } from "react-router-dom";
 import Inventory2Icon from "@mui/icons-material/Inventory2";
 import AddIcon from "@mui/icons-material/Add";
+import HomeIcon from "@mui/icons-material/Home";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
@@ -60,9 +61,42 @@ const Sidebar = () => {
           }}
         >
           <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
+            <ChevronLeftIcon sx={{ color: "white" }} />
           </IconButton>
         </Box>
+        <List>
+          <Typography
+            variant="h6"
+            sx={{
+              fontWeight: "bold",
+              mb: 2,
+              px: 2,
+              color: "#fff",
+              fontFamily: "Rubik",
+            }}
+          >
+            Home
+          </Typography>
+          <ListItem button sx={{ mb: 1 }}>
+            <Link
+              style={{
+                textDecoration: "none",
+                color: "#fff",
+                display: "block",
+                width: "100%",
+                "&:hover": { bgcolor: "#e0e0e0" },
+              }}
+              to="/"
+            >
+              <ListItemButton>
+                <ListItemIcon>
+                  <HomeIcon sx={{ color: "white" }} />
+                </ListItemIcon>
+                <Typography sx={{ fontFamily: "Rubik" }}>Home Page</Typography>
+              </ListItemButton>
+            </Link>
+          </ListItem>
+        </List>
         <List sx={{ mb: 2 }}>
           <Typography
             variant="h6"
