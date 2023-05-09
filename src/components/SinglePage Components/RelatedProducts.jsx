@@ -1,40 +1,21 @@
 import { Box, Grid, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchFeaturedProducts } from "../../store/productsSlice";
 
 const RelatedProducts = () => {
-  const products = [
-    {
-      name: "DRIED FRUIT",
-      images:
-        "https://cdn.discordapp.com/attachments/1098895428772184144/1099232508039675954/product-6.jpg",
-      price: "$30",
-    },
-
-    {
-      name: "DRIED FRUIT",
-      images:
-        "https://media.discordapp.net/attachments/1098895428772184144/1099232508354244688/product-7.jpg",
-      price: "$30",
-    },
-
-    {
-      name: "DRIED FRUIT",
-      images:
-        "https://media.discordapp.net/attachments/1098895428772184144/1099232508563963934/product-8.jpg",
-      price: "$30",
-    },
-
-    {
-      name: "DRIED FRUIT",
-      images:
-        "https://media.discordapp.net/attachments/1098895428772184144/1099232508786257931/product-9.jpg",
-      price: "$30",
-    },
-  ];
+  const dispatch = useDispatch();
+  const featuredProducts = useSelector(
+    (state) => state.products.featuredProducts
+  );
+  const lodaing = useSelector((state) => state.lodaing);
+  useEffect(() => {
+    dispatch(fetchFeaturedProducts());
+  }, [dispatch]);
 
   const [hoveredIdx, setHoveredIdx] = useState(null);
 
@@ -81,7 +62,7 @@ const RelatedProducts = () => {
           </Typography>
         </Box>
         <Grid container spacing={4}>
-          {products.map((product, idx) => (
+          {featuredProducts?.map((product, idx) => (
             <Grid item xs={12} md={3} sm={6}>
               <Box
                 sx={{
@@ -103,7 +84,7 @@ const RelatedProducts = () => {
                 onMouseLeave={() => handleMouseLeave()}
               >
                 <img
-                  src={product.images}
+                  src={product.img}
                   style={{
                     backgroundColor: "#f7f7f7",
                     backgroundSize: "cover",
@@ -117,6 +98,7 @@ const RelatedProducts = () => {
                     dispaly: "flex",
                     position: "absolute",
                     left: { xs: "70px", md: "20px" },
+                    top: { xs: "58%" },
                   }}
                 >
                   <ShoppingCartIcon
@@ -163,7 +145,7 @@ const RelatedProducts = () => {
                       },
                     }}
                   />
-                  <Link to="/">
+                  <Link to={`/${product._id}`}>
                     <RemoveRedEyeIcon
                       variant="subtitle2"
                       sx={{
@@ -197,10 +179,10 @@ const RelatedProducts = () => {
                   }}
                 >
                   <Typography sx={{ fontFamily: "Rubik", opacity: "0.6" }}>
-                    {product.name}
+                    {product.title}
                   </Typography>
                   <Typography sx={{ fontFamily: "Rubik", fontWeight: "bold" }}>
-                    {product.price}
+                    {"$" + product.price + ".00"}
                   </Typography>
                 </Box>
               </Box>

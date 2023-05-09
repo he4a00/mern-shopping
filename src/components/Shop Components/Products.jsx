@@ -191,7 +191,8 @@ const Products = () => {
                       sx={{
                         dispaly: "flex",
                         position: "absolute",
-                        left: "20px",
+                        left: { xs: "20%", md: "20px" },
+                        top: { xs: "60%", md: "" },
                       }}
                     >
                       <ShoppingCartIcon

@@ -11,17 +11,12 @@ import { Link } from "react-router-dom";
 const ProductsSlider = () => {
   const images = [
     {
-      name: "All",
-      images:
-        "https://media.discordapp.net/attachments/1098895428772184144/1098895496552128533/cat-1.jpg",
-    },
-    {
       name: "Fastfood",
       images:
         "https://media.discordapp.net/attachments/1098895428772184144/1099232551689789450/product-5.jpg",
     },
     {
-      name: "VEGETABLES",
+      name: "Vegetables",
       images:
         "https://media.discordapp.net/attachments/1098895428772184144/1098895497084805201/cat-3.jpg",
     },

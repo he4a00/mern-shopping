@@ -21,7 +21,6 @@ const FeaturedProducts = () => {
   }, [dispatch]);
 
   const categories = [
-    { name: "All" },
     { name: "Fruits" },
     { name: "Fresh Meat" },
     { name: "Vegetables" },
@@ -142,7 +141,7 @@ const FeaturedProducts = () => {
                           sx={{
                             dispaly: "flex",
                             position: "absolute",
-                            left: "20px",
+                            left: { md: "20px", xs: "20%" },
                             top: "60%",
                           }}
                         >
